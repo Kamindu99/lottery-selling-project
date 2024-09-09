@@ -136,5 +136,7 @@
   "utils": "Utils",
   "widgets": "Widgets",
   "More Items": "More Items",
-  "home": "Home"
+  "home": "Home",
+  "ticket-management": "Ticket Management",
+  "ticket-list": "Ticket List"
 }
