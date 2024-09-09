@@ -1,26 +1,17 @@
 // material-ui
+import { Box, Button, CardMedia, Container, Divider, Grid, Link, Stack, Typography } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Button, Container, CardMedia, Divider, Grid, Link, Stack, Typography } from '@mui/material';
 
 // third party
 import { motion } from 'framer-motion';
 
-// project import
-import useConfig from 'hooks/useConfig';
-
 // assets
 import { SendOutlined } from '@ant-design/icons';
 
-import imgfooterlogo from 'assets/images/landing/codedthemes-logo.svg';
-import imgfootersoc1 from 'assets/images/landing/img-soc1.svg';
-import imgfootersoc2 from 'assets/images/landing/img-soc2.svg';
-import imgfootersoc3 from 'assets/images/landing/img-soc3.svg';
 import AnimateButton from 'components/@extended/AnimateButton';
 
 // types
 import { ThemeDirection, ThemeMode } from 'types/config';
-
-const dashImage = require.context('assets/images/landing', true);
 
 // link - custom style
 const FooterLink = styled(Link)(({ theme }) => ({
@@ -41,7 +32,6 @@ type showProps = {
 
 const FooterBlock = ({ isFull }: showProps) => {
   const theme = useTheme();
-  const { presetColor } = useConfig();
   const textColor = theme.palette.mode === ThemeMode.DARK ? 'text.primary' : 'background.paper';
 
   const linkSX = {
@@ -102,7 +92,7 @@ const FooterBlock = ({ isFull }: showProps) => {
         >
           <CardMedia
             component="img"
-            image={dashImage(`./img-footer-${presetColor}.png`)}
+            image={''}
             sx={{
               display: { xs: 'none', md: 'block' },
               width: '55%',
@@ -189,7 +179,7 @@ const FooterBlock = ({ isFull }: showProps) => {
               >
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <CardMedia component="img" image={imgfooterlogo} sx={{ width: 'auto' }} />
+                    <CardMedia component="img" image={''} sx={{ width: 'auto' }} />
                   </Grid>
                   <Grid item xs={12}>
                     <Typography variant="subtitle1" sx={{ fontWeight: 400, color: theme.palette.common.white }}>
@@ -301,17 +291,17 @@ const FooterBlock = ({ isFull }: showProps) => {
               <Grid container spacing={2} alignItems="center" sx={{ justifyContent: 'flex-end' }}>
                 <Grid item>
                   <Link underline="none" sx={linkSX}>
-                    <CardMedia component="img" image={imgfootersoc1} />
+                    <CardMedia component="img" image={''} />
                   </Link>
                 </Grid>
                 <Grid item>
                   <Link underline="none" sx={linkSX}>
-                    <CardMedia component="img" image={imgfootersoc2} />
+                    <CardMedia component="img" image={''} />
                   </Link>
                 </Grid>
                 <Grid item>
                   <Link underline="none" sx={linkSX}>
-                    <CardMedia component="img" image={imgfootersoc3} />
+                    <CardMedia component="img" image={''} />
                   </Link>
                 </Grid>
               </Grid>
