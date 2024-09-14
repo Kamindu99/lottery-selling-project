@@ -49,7 +49,7 @@ const MainRoutes = {
             {
               path: 'tickets',
               element: <TicketList />
-            }
+            },
           ]
         },
         {

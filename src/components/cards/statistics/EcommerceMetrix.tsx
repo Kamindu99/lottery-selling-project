@@ -7,9 +7,11 @@ import { GenericCardProps } from 'types/root';
 
 // ==============================|| REPORT CARD ||============================== //
 
-interface EcommerceMetrixProps extends GenericCardProps {}
+interface EcommerceMetrixProps extends GenericCardProps {
+  onClick: () => void;
+}
 
-const EcommerceMetrix = ({ primary, secondary, content, iconPrimary, color }: EcommerceMetrixProps) => {
+const EcommerceMetrix = ({ primary, secondary, content, iconPrimary, color, onClick }: EcommerceMetrixProps) => {
   const IconPrimary = iconPrimary!;
   const primaryIcon = iconPrimary ? <IconPrimary fontSize="large" /> : null;
 
@@ -36,6 +38,7 @@ const EcommerceMetrix = ({ primary, secondary, content, iconPrimary, color }: Ec
           bottom: '80%'
         }
       }}
+      onClick={() => onClick()}
     >
       <Box sx={{ px: 4.5, py: 4 }}>
         <Grid container justifyContent="space-between" alignItems="center">
