@@ -81,7 +81,19 @@ const LotteryNumbersForm = ({
                 Select Your Lottery Numbers
               </Typography>
 
-              <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '15px', justifyItems: 'center', marginBottom: '20px' }}>
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: 'repeat(4, 1fr)', // 4 columns on extra small devices (mobile)
+                    sm: 'repeat(5, 1fr)', // 5 columns on small devices (tablet)
+                    md: 'repeat(6, 1fr)', // 6 columns on medium and larger devices (desktop)
+                  },
+                  gap: '15px',
+                  justifyItems: 'center',
+                  marginBottom: '20px',
+                }}
+              >
                 {[...Array(30)].map((_, index) => {
                   const number = index + 1;
                   const isSelected = selectedNumbers.includes(number);
@@ -93,13 +105,17 @@ const LotteryNumbersForm = ({
                         width: '50px',
                         height: '50px',
                         borderRadius: '50%',
-                        backgroundColor: isSelected ? 'linear-gradient(45deg, #ff6b6b, #f065c5)' : '#f0f0f0',
+                        backgroundColor: isSelected
+                          ? 'linear-gradient(45deg, #ff6b6b, #f065c5)'
+                          : '#f0f0f0',
                         color: isSelected ? 'white' : '#333',
                         fontSize: '16px',
                         fontWeight: 'bold',
                         transition: '0.3s',
                         '&:hover': {
-                          backgroundColor: isSelected ? 'linear-gradient(45deg, #ff6b6b, #f065c5)' : '#d8d8d8',
+                          backgroundColor: isSelected
+                            ? 'linear-gradient(45deg, #ff6b6b, #f065c5)'
+                            : '#d8d8d8',
                         },
                       }}
                     >
@@ -108,7 +124,6 @@ const LotteryNumbersForm = ({
                   );
                 })}
               </Box>
-
               <Box sx={{ marginTop: '20px' }}>
                 <Typography variant="h6" gutterBottom>
                   Selected Numbers

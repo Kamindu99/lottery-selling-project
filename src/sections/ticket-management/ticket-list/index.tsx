@@ -126,8 +126,7 @@ const CustomerFormWizard = ({ onCancel }: Props) => {
             {activeStep === steps.length ? (
               <>
                 <Typography variant="h5" gutterBottom>
-                  Customer Code<br />
-                  Customer Creation Successful !
+                  Ticket Booked Successfully
                 </Typography>
                 <Stack direction="row" justifyContent="flex-end">
                   <AnimateButton>
@@ -145,7 +144,7 @@ const CustomerFormWizard = ({ onCancel }: Props) => {
 
                         })
                         setLastSavedFormIndex(-1);
-                        window.location.replace('/member-registration/member/registration');
+                        onCancel()
                       }}
                       sx={{ my: 3, ml: 1 }}
                     >
