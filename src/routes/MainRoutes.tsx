@@ -22,6 +22,7 @@ const MaintenanceComingSoon = Loadable(lazy(() => import('pages/maintenance/comi
 // render - home page
 const Dashboard = Loadable(lazy(() => import('pages/home/dashboard')));
 const TicketList = Loadable(lazy(() => import('pages/ticket-management/ticket-list/ticket-list')));
+const WinnersList = Loadable(lazy(() => import('pages/ticket-management/winners-list/winners')));
 
 // user management
 const UserProfileTab = Loadable(lazy(() => import('pages/user-management/user-profile/TabPersonal')));
@@ -49,6 +50,10 @@ const MainRoutes = {
             {
               path: 'tickets',
               element: <TicketList />
+            },
+            {
+              path: 'winners',
+              element: <WinnersList />
             },
           ]
         },

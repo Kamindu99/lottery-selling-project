@@ -23,6 +23,13 @@ const ticketManagement: NavItemType = {
             type: 'item',
             url: '/home/tickets',
             icon: icons.FileAddTwoTone,
+        },
+        {
+            id: 'winners',
+            title: <FormattedMessage id="winners" />,
+            type: 'item',
+            url: '/home/winners',
+            icon: icons.FileAddTwoTone,
         }
     ]
 };

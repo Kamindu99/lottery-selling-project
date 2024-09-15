@@ -1,53 +1,9 @@
-// material-ui
-import {
-    Dialog,
-    Grid,
-    useTheme
-} from '@mui/material';
-
-// project imports
-
-// assets
-import {
-    DollarCircleFilled
-} from '@ant-design/icons';
-import EcommerceMetrix from 'components/cards/statistics/EcommerceMetrix';
+import { Box, Button, Card, CardContent, CardMedia, Dialog, Grid, Typography } from '@mui/material';
 import { PopupTransition } from 'components/@extended/Transitions';
+import React, { useState } from 'react';
 import AddEditBusinessNature from 'sections/ticket-management/ticket-list/ticket-booking-form';
-import { useState } from 'react';
 
-// ==============================|| TicketList ||============================== //
-
-const TicketList = () => {
-    const theme = useTheme();
-
-    const ticketList = [
-        {
-            id: '1',
-            title: 'Monthly Winning',
-            price: '$5',
-            available: '998 available',
-            color: theme.palette.primary.main,
-            icon: DollarCircleFilled
-        },
-        {
-            id: '2',
-            title: 'Annually Winning',
-            price: '$1',
-            available: '8756 available',
-            color: theme.palette.warning.main,
-            icon: DollarCircleFilled
-        },
-        {
-            id: '3',
-            title: 'On Demand',
-            price: '$1',
-            available: '100 available',
-            color: theme.palette.success.main,
-            icon: DollarCircleFilled
-        }
-    ];
-
+const HomePage: React.FC = () => {
     //dialog model 
     const [addEdit, setAddEdit] = useState<boolean>(false);
     const [businessNatureCode, setBusinessNatureCode] = useState();
@@ -56,20 +12,28 @@ const TicketList = () => {
         setAddEdit(!addEdit);
         if (businessNatureCode && !addEdit) setBusinessNatureCode(undefined);
     };
-
     return (
         <>
-            <Grid container spacing={3}>
-                {ticketList.map((item) => (
-                    <Grid item xs={12} lg={4} sm={6} key={item.id}>
-                        <EcommerceMetrix
-                            primary={item.title}
-                            secondary={item.price}
-                            content={item.available}
-                            color={item.color}
-                            iconPrimary={item.icon}
-                            onClick={handleAddEdit}
-                        />
+            {/* Hero Section */}
+            <Box style={{ backgroundImage: 'url(/lottery-bg.jpg)', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                <Typography variant="h3" style={{ color: 'blue' }}>Win Big Every Month, Year, or On Demand!</Typography>
+                <Button variant="contained" color="secondary" style={{ marginLeft: '20px' }}>Buy Tickets Now</Button>
+            </Box>
+
+            {/* Lottery Types */}
+            <Grid container spacing={3} style={{ padding: '20px' }}>
+                {['Monthly', 'Annual', 'On-Demand'].map((type) => (
+                    <Grid item xs={12} sm={4} key={type}>
+                        <Card onClick={handleAddEdit}>
+                            <CardMedia style={{ height: '140px' }} image={`https://images.moneycontrol.com/static-mcnews/2020/07/rupee-653x435.jpg?impolicy=website&width=770&height=431`} />
+                            <CardContent>
+                                <Typography variant="h5">{`${type} Lottery`}</Typography>
+                                <Typography>Next draw: Date goes here</Typography>
+                                <Button variant="contained" color="primary" style={{ marginTop: '10px' }}>
+                                    Buy {type} Ticket
+                                </Button>
+                            </CardContent>
+                        </Card>
                     </Grid>
                 ))}
             </Grid>
@@ -86,7 +50,7 @@ const TicketList = () => {
                 <AddEditBusinessNature onCancel={handleAddEdit} />
             </Dialog>
         </>
-    )
+    );
 };
 
-export default TicketList;
+export default HomePage;
