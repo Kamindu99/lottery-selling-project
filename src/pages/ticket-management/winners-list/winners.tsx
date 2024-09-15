@@ -58,7 +58,7 @@ const WinnersPage: React.FC = () => {
 
                 {/* Winning Cards Section */}
                 <Grid item xs={12} sm={8}>
-                    {[1, 2].map((_, index) => (
+                    {[1, 2, 3].map((_, index) => (
                         <Card key={index} sx={{ marginBottom: '20px', borderRadius: '20px', backgroundColor: '#6d8cc2' }}>
                             <CardContent sx={{ display: 'flex', justifyContent: 'space-between', color: 'white' }}>
                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
