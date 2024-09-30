@@ -24,8 +24,10 @@ const Dashboard = Loadable(lazy(() => import('pages/home/dashboard')));
 const TicketList = Loadable(lazy(() => import('pages/ticket-management/ticket-list/ticket-list')));
 const WinnersList = Loadable(lazy(() => import('pages/ticket-management/winners-list/winners')));
 
-// user management
-const UserProfileTab = Loadable(lazy(() => import('pages/user-management/user-profile/TabPersonal')));
+//user management
+const ViewProfile = Loadable(lazy(() => import('pages/user-management/profile-view/ViewProfile')));
+const EditProfile = Loadable(lazy(() => import('pages/user-management/profile-edit/EditProfile')));
+const PasswordChange = Loadable(lazy(() => import('pages/user-management/password-change/PasswordChange')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -61,11 +63,19 @@ const MainRoutes = {
           path: 'user-management',
           children: [
             {
-              path: 'user-profile',
-              element: <UserProfileTab />
-            }
+              path: 'view-profile',
+              element: <ViewProfile />
+            },
+            {
+              path: 'edit-profile',
+              element: <EditProfile />
+            },
+            {
+              path: 'password-change',
+              element: <PasswordChange />
+            },
           ]
-        },
+        }
       ]
     },
     {

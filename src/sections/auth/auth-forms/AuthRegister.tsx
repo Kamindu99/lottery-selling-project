@@ -35,6 +35,7 @@ import { StringColorProps } from 'types/password';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import AvatarUpload from 'components/third-party/dropzone/Avatar';
 
 // ============================|| JWT - REGISTER ||============================ //
 
@@ -68,8 +69,9 @@ const AuthRegister = () => {
         initialValues={{
           firstname: '',
           lastname: '',
+          occupation: '',
+          imageUrl: '',
           email: '',
-          company: '',
           password: '',
           submit: null
         }}
@@ -81,7 +83,7 @@ const AuthRegister = () => {
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
-            await register(values.email, values.password, values.firstname, values.lastname);
+            await register(values.email, values.password, values.firstname, values.lastname, values.occupation, values.imageUrl);
             if (scriptedRef.current) {
               setStatus({ success: true });
               setSubmitting(false);
@@ -111,9 +113,20 @@ const AuthRegister = () => {
           }
         }}
       >
-        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values, setFieldValue }) => (
           <form noValidate onSubmit={handleSubmit}>
             <Grid container spacing={3}>
+              <Grid item xs={12} lg={12}>
+                <Stack spacing={1.25} justifyContent="center" alignItems="center">
+                  <InputLabel htmlFor="imageUrl">Profile Image</InputLabel>
+                  <AvatarUpload
+                    //@ts-ignore
+                    file={values.imageUrl!}
+                    setFieldValue={setFieldValue}
+                    error={touched.imageUrl && Boolean(errors.imageUrl)}
+                  />
+                </Stack>
+              </Grid>
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="firstname-signup">First Name*</InputLabel>
@@ -124,7 +137,7 @@ const AuthRegister = () => {
                     name="firstname"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="John"
+                    placeholder="Enter First Name"
                     fullWidth
                     error={Boolean(touched.firstname && errors.firstname)}
                   />
@@ -147,7 +160,7 @@ const AuthRegister = () => {
                     name="lastname"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="Doe"
+                    placeholder="Enter Last Name"
                     inputProps={{}}
                   />
                   {touched.lastname && errors.lastname && (
@@ -157,23 +170,24 @@ const AuthRegister = () => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} md={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="company-signup">Company</InputLabel>
+                  <InputLabel htmlFor="occupation-signup">Occupation*</InputLabel>
                   <OutlinedInput
                     fullWidth
-                    error={Boolean(touched.company && errors.company)}
-                    id="company-signup"
-                    value={values.company}
-                    name="company"
+                    error={Boolean(touched.occupation && errors.occupation)}
+                    id="occupation-signup"
+                    type="occupation"
+                    value={values.occupation}
+                    name="occupation"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="Demo Inc."
+                    placeholder="Enter Occupation"
                     inputProps={{}}
                   />
-                  {touched.company && errors.company && (
-                    <FormHelperText error id="helper-text-company-signup">
-                      {errors.company}
+                  {touched.occupation && errors.occupation && (
+                    <FormHelperText error id="helper-text-occupation-signup">
+                      {errors.occupation}
                     </FormHelperText>
                   )}
                 </Stack>
@@ -190,7 +204,7 @@ const AuthRegister = () => {
                     name="email"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="demo@company.com"
+                    placeholder="Enter Email Address"
                     inputProps={{}}
                   />
                   {touched.email && errors.email && (
@@ -228,7 +242,7 @@ const AuthRegister = () => {
                         </IconButton>
                       </InputAdornment>
                     }
-                    placeholder="******"
+                    placeholder="Enter Password"
                     inputProps={{}}
                   />
                   {touched.password && errors.password && (
