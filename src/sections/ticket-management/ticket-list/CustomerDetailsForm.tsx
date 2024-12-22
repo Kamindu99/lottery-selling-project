@@ -122,7 +122,7 @@ const CustomerDetailsForm = ({
                   <Grid item xs={12} md={6}>
                     <Stack spacing={1.25} sx={{ mr: 2 }}>
                       <InputLabel htmlFor="email">
-                        Email Address <span style={{ color: 'red' }}>*</span>
+                        Email Address  <span style={{ color: 'red' }}>*</span>
                       </InputLabel>
                       <TextField
                         fullWidth
