@@ -135,7 +135,6 @@ const CustomerDetailsForm = ({
                     </Stack>
                   </Grid>
 
-
                   <Grid item xs={12}>
                     <Stack direction="row" justifyContent="flex-end">
                       <Button onClick={handleBack} sx={{ my: 3, ml: 1 }}>
